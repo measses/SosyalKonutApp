@@ -27,6 +27,19 @@ export default function DisclaimerModal() {
     checkDisclaimer();
   }, []);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showModal]);
+
   const closeModal = () => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('disclaimer-seen', 'true');
@@ -40,12 +53,19 @@ export default function DisclaimerModal() {
 
   return (
     <>
-      {/* Backdrop Overlay */}
-      <div className="fixed inset-0 bg-black/60 z-50 animate-fade-in" />
+      {/* Backdrop Overlay - Click to close */}
+      <div
+        className="fixed inset-0 bg-black/60 z-50 animate-fade-in"
+        onClick={closeModal}
+        aria-label="Kapat"
+      />
 
-      {/* Modal Card */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl shadow-2xl max-w-3xl w-full animate-scale-in border-2 border-brand-teal/30">
+      {/* Modal Container with scroll */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+        <div
+          className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl shadow-2xl max-w-3xl w-full animate-scale-in border-2 border-brand-teal/30 pointer-events-auto max-h-[90vh] overflow-y-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Header */}
           <div className="flex items-start justify-between p-6 border-b border-brand-teal/20">
             <div className="flex items-center gap-3">
@@ -58,10 +78,10 @@ export default function DisclaimerModal() {
             </div>
             <button
               onClick={closeModal}
-              className="text-gray-500 hover:text-brand-teal transition-colors p-1"
+              className="text-gray-500 hover:text-brand-teal transition-colors p-2 -m-2 touch-manipulation"
               aria-label="Kapat"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -137,7 +157,7 @@ export default function DisclaimerModal() {
           <div className="p-6 bg-teal-50/50 rounded-b-2xl border-t border-brand-teal/20">
             <button
               onClick={closeModal}
-              className="w-full px-6 py-3 bg-brand-teal text-white rounded-xl font-bold hover:bg-teal-700 transition-all hover:scale-105 shadow-lg"
+              className="w-full px-6 py-4 bg-brand-teal text-white rounded-xl font-bold hover:bg-teal-700 transition-all hover:scale-105 shadow-lg touch-manipulation active:scale-95"
             >
               Anladım, Devam Et
             </button>

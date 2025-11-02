@@ -30,6 +30,19 @@ export default function CookieConsent() {
     checkConsent();
   }, []);
 
+  // Prevent body scroll when banner is shown on mobile
+  useEffect(() => {
+    if (showBanner && typeof window !== 'undefined' && window.innerWidth < 768) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showBanner]);
+
   const acceptCookies = () => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('cookie-consent', 'accepted');
@@ -69,7 +82,7 @@ export default function CookieConsent() {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t-2 border-gray-200 shadow-2xl animate-slide-up">
+    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6 bg-white border-t-2 border-gray-200 shadow-2xl animate-slide-up max-h-[80vh] overflow-y-auto">
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
           {/* Icon */}
@@ -100,13 +113,13 @@ export default function CookieConsent() {
           <div className="flex gap-3 flex-shrink-0 w-full md:w-auto">
             <button
               onClick={rejectCookies}
-              className="flex-1 md:flex-none px-6 py-2.5 border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+              className="flex-1 md:flex-none px-6 py-3 md:py-2.5 border-2 border-gray-300 rounded-lg font-semibold text-gray-700 hover:bg-gray-50 transition-all touch-manipulation active:scale-95"
             >
               Reddet
             </button>
             <button
               onClick={acceptCookies}
-              className="flex-1 md:flex-none px-6 py-2.5 bg-brand-teal text-white rounded-lg font-semibold hover:bg-teal-700 transition-colors"
+              className="flex-1 md:flex-none px-6 py-3 md:py-2.5 bg-brand-teal text-white rounded-lg font-semibold hover:bg-teal-700 transition-all shadow-md hover:shadow-lg touch-manipulation active:scale-95"
             >
               Kabul Et
             </button>
