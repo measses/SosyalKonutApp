@@ -6,6 +6,25 @@ Sosyal Konut App, TOKİ/Sosyal Konut başvurusu düşünenlerin taksit artışla
 
 [English](#english) | [Türkçe](#türkçe)
 
+
+
+## Ekran Görüntüleri
+
+![Sosyal Konut](https://github.com/user-attachments/assets/c2020c2f-c6f4-4a90-bcb2-867d5733cdaa)
+
+![SosyalKonut-2](https://github.com/user-attachments/assets/fe191902-e1c1-4069-9518-c62e13e80f35)
+
+![s-3](https://github.com/user-attachments/assets/35671fb7-95fd-406c-a01d-336358d73025)
+
+![s-4](https://github.com/user-attachments/assets/86840b88-f73f-4922-a48d-b687a7ef4f8e)
+
+![s-5](https://github.com/user-attachments/assets/f5d3e90e-29bb-42db-978e-7b0fa301889d)
+
+
+
+
+
+
 ---
 
 ## 🇹🇷 Türkçe
