@@ -12,6 +12,7 @@
   "nav": {
     "home": "Home",
     "calculator": "Calculator",
+    "blog": "Blog",
     "faq": "FAQ"
   },
   "home": {
@@ -140,6 +141,121 @@
     "description": "Social Housing App - Open-source social housing decision support tool",
     "disclaimer": "This tool is for informational purposes. For official data",
     "and": "and",
-    "visit": "visit these websites."
+    "visit": "visit these websites.",
+    "legal": {
+      "privacyPolicy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact"
+    }
+  },
+  "privacyPolicy": {
+    "metaTitle": "Privacy Policy - Social Housing App",
+    "metaDescription": "Social Housing App privacy policy and information about the protection of your personal data.",
+    "title": "Privacy Policy",
+    "intro": "At Social Housing App, we respect your privacy. This page explains how your data is processed when using the application.",
+    "lastUpdated": "Last updated: December 2024",
+    "section1": {
+      "title": "1. Data Collection",
+      "content": "Social Housing App collects the following data to improve user experience and service quality:",
+      "item1": "Calculation parameters (installment amount, income information, rent amount)",
+      "item2": "Device and browser information (user agent, IP address, language preference)",
+      "item3": "Usage statistics (page views, calculation count)",
+      "item4": "Cookie data (preferences, session information)"
+    },
+    "section2": {
+      "title": "2. Data Usage",
+      "content": "Collected data is used for the following purposes:",
+      "item1": "Providing and improving calculation services",
+      "item2": "Personalizing user experience",
+      "item3": "Debugging and performance optimization"
+    },
+    "section3": {
+      "title": "3. Data Storage and Security",
+      "content": "Your data is stored on secure servers and protected against unauthorized access. Your personal data is not shared with third parties."
+    },
+    "section4": {
+      "title": "4. Cookies",
+      "content": "The application uses cookies to store user preferences and collect analytics data. You can disable cookies in your browser settings."
+    },
+    "section5": {
+      "title": "5. User Rights",
+      "content": "Under GDPR/KVKK, you can request access, correction, and deletion of your data. You can contact us to exercise these rights."
+    },
+    "section6": {
+      "title": "6. Contact",
+      "content": "For questions about the privacy policy:"
+    }
+  },
+  "terms": {
+    "metaTitle": "Terms of Service - Social Housing App",
+    "metaDescription": "Social Housing App terms of service and disclaimer.",
+    "title": "Terms of Service",
+    "intro": "By using Social Housing App, you agree to the following terms.",
+    "lastUpdated": "Last updated: December 2024",
+    "section1": {
+      "title": "1. Service Description",
+      "content": "Social Housing App is a free calculation and simulation tool developed to assist citizens considering TOKİ/Social Housing applications in their decision-making process."
+    },
+    "section2": {
+      "title": "2. Disclaimer",
+      "content": "This tool is for informational purposes only. Please note the following:",
+      "item1": "Calculations are estimates and may differ from official results",
+      "item2": "Actual installment amounts and increase rates are determined by TOKİ",
+      "item3": "For legal and official processes, refer to toki.gov.tr and evsahibiturkiye.gov.tr",
+      "item4": "Application developers cannot be held responsible for damages arising from calculation results"
+    },
+    "section3": {
+      "title": "3. User Responsibilities",
+      "content": "Users are responsible for entering accurate information and should evaluate calculation results at their own risk and responsibility."
+    },
+    "section4": {
+      "title": "4. Intellectual Property",
+      "content": "Social Housing App is an open-source project (MIT License). Source code is accessible on GitHub."
+    },
+    "section5": {
+      "title": "5. Changes",
+      "content": "Terms of service may be updated without prior notice. Changes will:",
+      "item1": "Be published on this page",
+      "item2": "Be deemed accepted when new terms take effect",
+      "item3": "Result in user notification for significant changes"
+    },
+    "section6": {
+      "title": "6. Service Interruption",
+      "content": "Service is provided without interruption whenever possible, but interruptions may occur due to maintenance, updates, or technical issues."
+    },
+    "section7": {
+      "title": "7. Contact",
+      "content": "For questions about the terms of service:"
+    }
+  },
+  "contact": {
+    "metaTitle": "Contact - Social Housing App",
+    "metaDescription": "Contact Social Housing App. Reach out for feedback, suggestions, and questions.",
+    "title": "Contact",
+    "subtitle": "Your feedback, suggestions, and questions are important to us. You can reach us through the following channels.",
+    "github": {
+      "title": "GitHub",
+      "subtitle": "Our open-source project",
+      "description": "You can review the source code, report bugs, or suggest features.",
+      "button": "Go to GitHub Repository"
+    },
+    "email": {
+      "title": "Email",
+      "subtitle": "Direct communication",
+      "description": "You can send emails for general inquiries, collaborations, and other topics.",
+      "button": "Send Email"
+    },
+    "opensource": {
+      "title": "Open Source Community",
+      "description": "Social Housing App is an open-source project. Join our community, contribute, and be part of the development process.",
+      "repo": "Source Code",
+      "issues": "Report Issue",
+      "discussions": "Discussions"
+    },
+    "support": {
+      "title": "Support the Project",
+      "description": "If you'd like to support the project's development, you can buy us a coffee.",
+      "button": "Buy Me a Coffee"
+    }
   }
 }

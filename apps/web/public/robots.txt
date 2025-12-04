@@ -22,6 +22,14 @@ Allow: /tr/calculator
 Allow: /en/calculator
 Allow: /tr/faq
 Allow: /en/faq
+Allow: /tr/privacy-policy
+Allow: /en/privacy-policy
+Allow: /tr/terms
+Allow: /en/terms
+Allow: /tr/iletisim
+Allow: /en/iletisim
+Allow: /tr/blog
+Allow: /en/blog
 
 # Good bots
 User-agent: Googlebot

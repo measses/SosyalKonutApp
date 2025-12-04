@@ -12,6 +12,7 @@
   "nav": {
     "home": "Ana Sayfa",
     "calculator": "Hesaplama",
+    "blog": "Blog",
     "faq": "S.S.S"
   },
   "home": {
@@ -140,6 +141,121 @@
     "description": "Sosyal Konut App - Açık kaynak sosyal konut karar destek aracı",
     "disclaimer": "Bu araç bilgilendirme amaçlıdır. Resmi veriler için",
     "and": "ve",
-    "visit": "adreslerini ziyaret edin."
+    "visit": "adreslerini ziyaret edin.",
+    "legal": {
+      "privacyPolicy": "Gizlilik Politikası",
+      "terms": "Kullanım Şartları",
+      "contact": "İletişim"
+    }
+  },
+  "privacyPolicy": {
+    "metaTitle": "Gizlilik Politikası - Sosyal Konut App",
+    "metaDescription": "Sosyal Konut App gizlilik politikası ve kişisel verilerinizin korunmasına ilişkin bilgilendirme metni.",
+    "title": "Gizlilik Politikası",
+    "intro": "Sosyal Konut App olarak gizliliğinize saygı duyuyoruz. Bu sayfa, uygulamayı kullanırken verilerinizin nasıl işlendiğini açıklar.",
+    "lastUpdated": "Son güncelleme: Aralık 2024",
+    "section1": {
+      "title": "1. Toplanan Veriler",
+      "content": "Sosyal Konut App, kullanıcı deneyimini geliştirmek ve hizmet kalitesini artırmak için aşağıdaki verileri toplar:",
+      "item1": "Hesaplama parametreleri (taksit tutarı, gelir bilgisi, kira bedeli)",
+      "item2": "Cihaz ve tarayıcı bilgileri (kullanıcı aracısı, IP adresi, dil tercihi)",
+      "item3": "Kullanım istatistikleri (sayfa görüntülemeleri, hesaplama sayısı)",
+      "item4": "Çerez verileri (tercihler, oturum bilgileri)"
+    },
+    "section2": {
+      "title": "2. Verilerin Kullanımı",
+      "content": "Toplanan veriler şu amaçlarla kullanılır:",
+      "item1": "Hesaplama hizmetlerinin sağlanması ve iyileştirilmesi",
+      "item2": "Kullanıcı deneyiminin kişiselleştirilmesi",
+      "item3": "Hata ayıklama ve performans optimizasyonu"
+    },
+    "section3": {
+      "title": "3. Veri Saklama ve Güvenlik",
+      "content": "Verileriniz güvenli sunucularda saklanır ve yetkisiz erişime karşı korunur. Kişisel verileriniz üçüncü taraflarla paylaşılmaz."
+    },
+    "section4": {
+      "title": "4. Çerezler",
+      "content": "Uygulama, kullanıcı tercihlerini kaydetmek ve analitik veriler toplamak için çerezler kullanır. Tarayıcı ayarlarınızdan çerezleri devre dışı bırakabilirsiniz."
+    },
+    "section5": {
+      "title": "5. Kullanıcı Hakları",
+      "content": "KVKK kapsamında verilerinize erişim, düzeltme ve silme talebinde bulunabilirsiniz. Bu hakları kullanmak için bizimle iletişime geçebilirsiniz."
+    },
+    "section6": {
+      "title": "6. İletişim",
+      "content": "Gizlilik politikası hakkında sorularınız için:"
+    }
+  },
+  "terms": {
+    "metaTitle": "Kullanım Şartları - Sosyal Konut App",
+    "metaDescription": "Sosyal Konut App kullanım şartları ve sorumluluk reddi beyanı.",
+    "title": "Kullanım Şartları",
+    "intro": "Sosyal Konut App'i kullanarak aşağıdaki şartları kabul etmiş sayılırsınız.",
+    "lastUpdated": "Son güncelleme: Aralık 2024",
+    "section1": {
+      "title": "1. Hizmet Tanımı",
+      "content": "Sosyal Konut App, TOKİ/Sosyal Konut başvurusu düşünen vatandaşların karar süreçlerine yardımcı olmak amacıyla geliştirilmiş ücretsiz bir hesaplama ve simülasyon aracıdır."
+    },
+    "section2": {
+      "title": "2. Sorumluluk Reddi",
+      "content": "Bu araç yalnızca bilgilendirme amaçlıdır. Aşağıdaki hususlara dikkat edilmelidir:",
+      "item1": "Hesaplamalar tahmini olup resmi sonuçlardan farklı olabilir",
+      "item2": "Gerçek taksit tutarları ve artış oranları TOKİ tarafından belirlenir",
+      "item3": "Yasal ve resmi işlemler için toki.gov.tr ve evsahibiturkiye.gov.tr adreslerine başvurulmalıdır",
+      "item4": "Uygulama geliştiricileri hesaplama sonuçlarından doğabilecek zararlardan sorumlu tutulamaz"
+    },
+    "section3": {
+      "title": "3. Kullanıcı Sorumlulukları",
+      "content": "Kullanıcılar doğru bilgi girişinden sorumludur ve hesaplama sonuçlarını kendi risk ve sorumluluklarında değerlendirmelidir."
+    },
+    "section4": {
+      "title": "4. Fikri Mülkiyet",
+      "content": "Sosyal Konut App açık kaynak kodlu bir projedir (MIT Lisansı). Kaynak kodu GitHub üzerinde erişilebilir."
+    },
+    "section5": {
+      "title": "5. Değişiklikler",
+      "content": "Kullanım şartları önceden haber verilmeksizin güncellenebilir. Değişiklikler:",
+      "item1": "Bu sayfada yayınlanır",
+      "item2": "Yeni şartlar yürürlüğe girdiğinde kabul edilmiş sayılır",
+      "item3": "Önemli değişiklikler için kullanıcılar bilgilendirilir"
+    },
+    "section6": {
+      "title": "6. Hizmet Kesintisi",
+      "content": "Hizmet kesintisiz sunulmaya çalışılır ancak bakım, güncelleme veya teknik sorunlar nedeniyle kesintiler yaşanabilir."
+    },
+    "section7": {
+      "title": "7. İletişim",
+      "content": "Kullanım şartları hakkında sorularınız için:"
+    }
+  },
+  "contact": {
+    "metaTitle": "İletişim - Sosyal Konut App",
+    "metaDescription": "Sosyal Konut App ile iletişime geçin. Geri bildirim, öneri ve sorularınız için bizimle iletişime geçebilirsiniz.",
+    "title": "İletişim",
+    "subtitle": "Geri bildirimleriniz, önerileriniz ve sorularınız bizim için önemlidir. Aşağıdaki kanallardan bize ulaşabilirsiniz.",
+    "github": {
+      "title": "GitHub",
+      "subtitle": "Açık kaynak projemiz",
+      "description": "Kaynak kodunu inceleyebilir, hata bildiriminde bulunabilir veya özellik önerisinde bulunabilirsiniz.",
+      "button": "GitHub Reposuna Git"
+    },
+    "email": {
+      "title": "E-posta",
+      "subtitle": "Doğrudan iletişim",
+      "description": "Genel sorular, işbirlikleri ve diğer konular için e-posta gönderebilirsiniz.",
+      "button": "E-posta Gönder"
+    },
+    "opensource": {
+      "title": "Açık Kaynak Topluluk",
+      "description": "Sosyal Konut App açık kaynak bir projedir. Topluluğumuza katılın, katkıda bulunun ve geliştirme sürecine dahil olun.",
+      "repo": "Kaynak Kodu",
+      "issues": "Sorun Bildir",
+      "discussions": "Tartışmalar"
+    },
+    "support": {
+      "title": "Projeyi Destekle",
+      "description": "Projenin gelişimini desteklemek isterseniz, bir kahve ısmarlayabilirsiniz.",
+      "button": "Kahve Ismarla"
+    }
   }
 }
