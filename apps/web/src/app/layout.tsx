@@ -97,6 +97,7 @@ export const metadata: Metadata = {
 };
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || '';
+const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_ID || 'ca-pub-7664256895774074';
 
 export default function RootLayout({
   children,
@@ -106,6 +107,7 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head suppressHydrationWarning>
+        {/* Google Analytics */}
         {GA_ID && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
@@ -116,6 +118,13 @@ export default function RootLayout({
             />
           </>
         )}
+
+        {/* Google AdSense */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_ID}`}
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         {children}
