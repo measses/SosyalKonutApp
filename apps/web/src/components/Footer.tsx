@@ -1,9 +1,13 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Footer() {
   const t = useTranslations('footer');
+  const params = useParams();
+  const locale = params.locale as string;
 
   return (
     <footer className="border-t mt-16 bg-gradient-to-b from-white to-gray-50">
@@ -35,6 +39,30 @@ export default function Footer() {
             </a>
             {' '}{t('visit')}
           </p>
+
+          {/* Legal Links */}
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-600">
+            <Link
+              href={`/${locale}/privacy-policy`}
+              className="hover:text-brand-teal transition-colors underline"
+            >
+              {t('legal.privacyPolicy')}
+            </Link>
+            <span className="text-gray-400">•</span>
+            <Link
+              href={`/${locale}/terms`}
+              className="hover:text-brand-teal transition-colors underline"
+            >
+              {t('legal.terms')}
+            </Link>
+            <span className="text-gray-400">•</span>
+            <Link
+              href={`/${locale}/iletisim`}
+              className="hover:text-brand-teal transition-colors underline"
+            >
+              {t('legal.contact')}
+            </Link>
+          </div>
 
           {/* Divider */}
           <div className="flex items-center justify-center gap-4 py-4">

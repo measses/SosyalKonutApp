@@ -23,10 +23,12 @@ export default function CalculatorPage() {
   // Form states (use string to allow empty state, convert to number when needed)
   const [monthlyIncome, setMonthlyIncome] = useState<string>('100000'); // 100,000 TL (as TL, not kuruş)
   const [incomeIncrease, setIncomeIncrease] = useState<string>('15');
-  const [isRenting, setIsRenting] = useState(true); // Yeni: Kiracı mı?
+  const [housingStatus, setHousingStatus] = useState<'owner' | 'renting' | 'dormitory'>('renting');
   const [monthlyRent, setMonthlyRent] = useState<string>('15000');
   const [rentIncrease, setRentIncrease] = useState<string>('25');
   const [deliveryDelay, setDeliveryDelay] = useState<string>('24');
+  const [dormitoryYears, setDormitoryYears] = useState<string>('3'); // Lojmanda kalma süresi
+  const [rentAfterDormitory, setRentAfterDormitory] = useState<string>('15000'); // Lojman sonrası kira
   const [installmentIncrease, setInstallmentIncrease] = useState<string>('7.5');
   const [selectedPreset, setSelectedPreset] = useState<'optimistic' | 'moderate' | 'pessimistic'>('moderate');
 
@@ -54,6 +56,30 @@ export default function CalculatorPage() {
     setIsCalculating(true);
 
     try {
+      // Lojman senaryosu hesaplaması
+      let monthlyRentValue = 0;
+      let rentIncreaseValue = 0;
+      let deliveryDelayValue = 0;
+
+      if (housingStatus === 'renting') {
+        // Normal kiracı
+        monthlyRentValue = (Number(monthlyRent) || 0) * 100;
+        rentIncreaseValue = Number(rentIncrease) || 0;
+        deliveryDelayValue = Number(deliveryDelay) || 0;
+      } else if (housingStatus === 'dormitory') {
+        // Lojman durumu
+        const dormitoryMonths = (Number(dormitoryYears) || 0) * 12;
+        const totalDeliveryDelay = Number(deliveryDelay) || 0;
+
+        if (dormitoryMonths < totalDeliveryDelay) {
+          // Lojman bitince, TOKİ teslim edilene kadar kira öder
+          monthlyRentValue = (Number(rentAfterDormitory) || 0) * 100;
+          rentIncreaseValue = Number(rentIncrease) || 0;
+          deliveryDelayValue = totalDeliveryDelay - dormitoryMonths; // Sadece lojman sonrası kira
+        }
+        // Eğer lojman süresi >= teslim gecikmesi ise, hiç kira yok
+      }
+
       const config: ScenarioConfig = {
         name: 'TOKİ Hesaplama',
         installmentConfig: {
@@ -84,9 +110,9 @@ export default function CalculatorPage() {
           projectionPeriodUnit: 'month',
         },
         rentConfig: {
-          monthlyRent: isRenting ? (Number(monthlyRent) || 0) * 100 : 0,
-          annualIncreasePercentage: isRenting ? (Number(rentIncrease) || 0) : 0,
-          deliveryDelayMonths: isRenting ? (Number(deliveryDelay) || 0) : 0,
+          monthlyRent: monthlyRentValue,
+          annualIncreasePercentage: rentIncreaseValue,
+          deliveryDelayMonths: deliveryDelayValue,
         },
       };
 
@@ -221,30 +247,61 @@ export default function CalculatorPage() {
                 />
               </FormSection>
 
-              <FormSection title="Kira Bilgileri">
-                {/* Kiracı mı? Checkbox */}
-                <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <input
-                    type="checkbox"
-                    id="isRenting"
-                    checked={isRenting}
-                    onChange={(e) => setIsRenting(e.target.checked)}
-                    className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-2 focus:ring-blue-600"
-                  />
-                  <div className="flex-1">
-                    <label htmlFor="isRenting" className="font-medium text-gray-900 cursor-pointer flex items-center gap-2">
-                      Şu an kiracıyım
-                      <InfoTooltip />
-                    </label>
-                    <p className="text-sm text-gray-600 mt-1">
-                      TOKİ konutu teslim edilene kadar kira ödemesi yapıyorum
-                    </p>
-                  </div>
+              <FormSection title="Konut Durumu">
+                {/* Radio buttons for housing status */}
+                <div className="space-y-3">
+                  <label className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all hover:bg-gray-50 ${housingStatus === 'owner' ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+                    <input
+                      type="radio"
+                      name="housingStatus"
+                      value="owner"
+                      checked={housingStatus === 'owner'}
+                      onChange={(e) => setHousingStatus(e.target.value as any)}
+                      className="mt-1 w-4 h-4 text-blue-600"
+                    />
+                    <div className="flex-1">
+                      <div className="font-medium text-gray-900">🏠 Ev Sahibiyim</div>
+                      <p className="text-sm text-gray-600 mt-1">Şu an kendi evimde oturuyorum</p>
+                    </div>
+                  </label>
+
+                  <label className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all hover:bg-gray-50 ${housingStatus === 'renting' ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+                    <input
+                      type="radio"
+                      name="housingStatus"
+                      value="renting"
+                      checked={housingStatus === 'renting'}
+                      onChange={(e) => setHousingStatus(e.target.value as any)}
+                      className="mt-1 w-4 h-4 text-blue-600"
+                    />
+                    <div className="flex-1">
+                      <div className="font-medium text-gray-900 flex items-center gap-2">
+                        🏘️ Kiracıyım
+                        <InfoTooltip />
+                      </div>
+                      <p className="text-sm text-gray-600 mt-1">Kira ödeyerek oturuyorum</p>
+                    </div>
+                  </label>
+
+                  <label className={`flex items-start gap-3 p-4 border-2 rounded-lg cursor-pointer transition-all hover:bg-gray-50 ${housingStatus === 'dormitory' ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+                    <input
+                      type="radio"
+                      name="housingStatus"
+                      value="dormitory"
+                      checked={housingStatus === 'dormitory'}
+                      onChange={(e) => setHousingStatus(e.target.value as any)}
+                      className="mt-1 w-4 h-4 text-blue-600"
+                    />
+                    <div className="flex-1">
+                      <div className="font-medium text-gray-900">🏢 Lojmanda Kalıyorum</div>
+                      <p className="text-sm text-gray-600 mt-1">Devlet/şirket lojmanında oturuyorum</p>
+                    </div>
+                  </label>
                 </div>
 
-                {/* Kira detayları - Sadece kiracı ise göster */}
-                {isRenting && (
-                  <div className="space-y-4 pt-2">
+                {/* Kiracı detayları */}
+                {housingStatus === 'renting' && (
+                  <div className="space-y-4 pt-4 mt-4 border-t">
                     <FormInput
                       label="Aylık Kira (₺)"
                       value={monthlyRent}
@@ -269,6 +326,44 @@ export default function CalculatorPage() {
                     <div className="text-xs text-gray-500 bg-gray-50 p-3 rounded border">
                       <strong>💡 Not:</strong> TOKİ projelerinde teslimat gecikmesi yaşanabilir.
                       Bu sürede hem kira hem taksit ödemesi yaparsınız.
+                    </div>
+                  </div>
+                )}
+
+                {/* Lojman detayları */}
+                {housingStatus === 'dormitory' && (
+                  <div className="space-y-4 pt-4 mt-4 border-t">
+                    <FormInput
+                      label="Lojmanda Kaç Yıl Daha Kalacaksınız?"
+                      value={dormitoryYears}
+                      onChange={(e) => setDormitoryYears(e.target.value)}
+                      type="number"
+                      step="1"
+                    />
+                    <FormInput
+                      label="Tahmini Teslimat Gecikmesi (Ay)"
+                      value={deliveryDelay}
+                      onChange={(e) => setDeliveryDelay(e.target.value)}
+                      type="number"
+                      step="6"
+                    />
+                    <FormInput
+                      label="Lojman Sonrası Aylık Kira (₺)"
+                      value={rentAfterDormitory}
+                      onChange={(e) => setRentAfterDormitory(e.target.value)}
+                      type="number"
+                      step="1000"
+                    />
+                    <FormInput
+                      label="Yıllık Kira Artışı (%)"
+                      value={rentIncrease}
+                      onChange={(e) => setRentIncrease(e.target.value)}
+                      type="number"
+                      step="1"
+                    />
+                    <div className="text-xs text-gray-500 bg-amber-50 p-3 rounded border border-amber-200">
+                      <strong>💡 Lojman Senaryosu:</strong> Lojmanda kaldığınız süre boyunca kira ödemezsiniz.
+                      Lojman süresi bittiğinde ve TOKİ henüz teslim edilmediyse, kira ödemesi başlar.
                     </div>
                   </div>
                 )}
@@ -380,7 +475,7 @@ export default function CalculatorPage() {
 
           <SummaryCards result={result} />
           <ChartSection result={result} />
-          <InstallmentTable result={result} isRenting={isRenting} />
+          <InstallmentTable result={result} isRenting={housingStatus !== 'owner'} />
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
+import LocaleSwitcher from './LocaleSwitcher';
 
 export default function Navbar({ locale }: { locale: string }) {
   const t = useTranslations('nav');
@@ -41,6 +42,12 @@ export default function Navbar({ locale }: { locale: string }) {
               {t('calculator')}
             </Link>
             <Link
+              href={`/${locale}/blog`}
+              className="text-gray-700 hover:text-brand-teal transition-all duration-200 font-semibold text-base hover:scale-105"
+            >
+              {t('blog')}
+            </Link>
+            <Link
               href={`/${locale}/faq`}
               className="text-gray-700 hover:text-brand-teal transition-all duration-200 font-semibold text-base hover:scale-105"
             >
@@ -50,6 +57,9 @@ export default function Navbar({ locale }: { locale: string }) {
 
           {/* Right Side Icons + Hamburger */}
           <div className="flex items-center space-x-4">
+            {/* Language Switcher */}
+            <LocaleSwitcher locale={locale} />
+
             {/* Social Icons - Always Visible */}
             <a
               href="https://github.com/measses/TokiCheck"
@@ -116,6 +126,13 @@ export default function Navbar({ locale }: { locale: string }) {
                 className="text-gray-700 hover:text-brand-teal hover:bg-gray-50 transition-all duration-200 font-semibold text-base py-3 px-4 rounded-lg"
               >
                 {t('calculator')}
+              </Link>
+              <Link
+                href={`/${locale}/blog`}
+                onClick={() => setIsMenuOpen(false)}
+                className="text-gray-700 hover:text-brand-teal hover:bg-gray-50 transition-all duration-200 font-semibold text-base py-3 px-4 rounded-lg"
+              >
+                {t('blog')}
               </Link>
               <Link
                 href={`/${locale}/faq`}
